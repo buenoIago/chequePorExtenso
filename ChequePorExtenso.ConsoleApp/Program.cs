@@ -26,36 +26,126 @@ Console.Write("Digite um número: ");
 int numero = Convert.ToInt32(Console.ReadLine());
 
 int resto = numero % 1000;
-int milhar = numero / 1000;
-int centenaNumero = resto / 100;
-int dezenaNumero = (resto % 100) / 10;
-int unidadeNumero = resto % 10;
+int milharNumero = (numero / 1000) % 1000;
+int milhaoNumero = numero / 1000000;
 
-if (milhar > 0)
+if (milhaoNumero > 0)
 {
-    if (milhar < 10)
-    {
-        Console.Write($"{unidade[milhar]} mil ");
-    }
+    int centenaNumeroMilhao = milhaoNumero / 100;
+    int dezenaNumeroMilhao = (milhaoNumero % 100) / 10;
+    int unidadeNumeroMilhao = milhaoNumero % 10;
 
-    else if (milhar >= 10 && milhar <= 19)
+    if (milhaoNumero == 100)
     {
-        Console.Write($"{excecao[milhar - 10]} mil ");
+        Console.Write("Cem milhões ");
     }
 
     else
     {
-        int dezenaMilhar = milhar / 10;
-        int unidadeMilhar = milhar % 10;
+        if (centenaNumeroMilhao > 0)
+        {
+            Console.Write($"{centena[centenaNumeroMilhao]}");
+        }
 
-        Console.Write($"{dezena[dezenaMilhar]}");
+        if (dezenaNumeroMilhao == 1)
+        {
+            if (centenaNumeroMilhao > 0)
+                Console.Write(" e ");
 
-        if (unidadeMilhar > 0)
-            Console.Write($" e {unidade[unidadeMilhar]}");
+            Console.Write($"{excecao[unidadeNumeroMilhao]}");
+        }
 
-        Console.Write(" mil " );
+        else
+        {
+            if (dezenaNumeroMilhao > 1)
+            {
+                if (centenaNumeroMilhao > 0)
+                    Console.Write(" e ");
+
+                Console.Write($"{dezena[dezenaNumeroMilhao]}");
+            }
+
+            if (unidadeNumeroMilhao > 0)
+            {
+                if (centenaNumeroMilhao > 0 || dezenaNumeroMilhao > 1)
+                    Console.Write(" e ");
+
+                Console.Write($"{unidade[unidadeNumeroMilhao]}");
+            }
+        }
+
+        if (milhaoNumero == 1)
+            Console.Write(" milhão ");
+        else
+            Console.Write(" milhões ");
     }
 }
+
+if (milharNumero > 0)
+{
+    int centenaMilhar = milharNumero / 100;
+    int dezenaMilhar = (milharNumero % 100) / 10;
+    int unidadeMilhar = milharNumero % 10;
+
+    if (milharNumero < 10)
+    {
+        Console.Write($"{unidade[milharNumero]} mil ");
+    }
+
+    else if (milharNumero >= 10 && milharNumero <= 19)
+    {
+        Console.Write($"{excecao[milharNumero - 10]} mil ");
+    }
+
+    else
+    {
+        if (milharNumero == 100)
+        {
+            Console.Write("Cem mil ");
+        }
+
+        else
+        {
+            if (centenaMilhar > 0)
+            {
+                Console.Write($"{centena[centenaMilhar]}");
+            }
+
+            if (dezenaMilhar == 1)
+            {
+                if (centenaMilhar > 0)
+                    Console.Write(" e ");
+
+                Console.Write($"{excecao[unidadeMilhar]}");
+            }
+
+            else
+            {
+                if (dezenaMilhar > 1)
+                {
+                    if (centenaMilhar > 0)
+                        Console.Write(" e ");
+
+                    Console.Write($"{dezena[dezenaMilhar]}");
+                }
+
+                if (unidadeMilhar > 0)
+                {
+                    if (centenaMilhar > 0 || dezenaMilhar > 1)
+                        Console.Write(" e ");
+
+                    Console.Write($"{unidade[unidadeMilhar]}");
+                }
+            }
+
+            Console.Write(" mil ");
+        }
+    }
+}
+
+int centenaNumero = resto / 100;
+int dezenaNumero = (resto % 100) / 10;
+int unidadeNumero = resto % 10;
 
 if (resto == 100)
 {
@@ -100,10 +190,9 @@ else
 if (numero == 1)
     Console.WriteLine(" real");
 
-else    
+else
     Console.WriteLine(" reais");
 
-Console.WriteLine("---------------------------------"); 
-Console.WriteLine("Digite enter para continuar..."); 
-Console.WriteLine("---------------------------------"); 
-
+Console.WriteLine("---------------------------------");
+Console.WriteLine("Digite enter para continuar...");
+Console.WriteLine("---------------------------------");
