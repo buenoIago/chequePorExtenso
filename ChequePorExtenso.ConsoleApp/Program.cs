@@ -193,6 +193,7 @@ if (numero == 1)
 else
     Console.WriteLine(" reais");
 
-Console.WriteLine("---------------------------------");
+Console.WriteLine("\n---------------------------------");
 Console.WriteLine("Digite enter para continuar...");
 Console.WriteLine("---------------------------------");
+Console.ReadLine();
