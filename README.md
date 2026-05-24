@@ -5,7 +5,7 @@ O objetivo do projeto é praticar lógica de programação, manipulação numér
 
 Desenvolvido por **Iago** durante o curso Fullstack da [Academia do Programador](https://www.academiadoprogramador.net) em 2026.
 
-![alt text](Arquivos/WindowsTerminal_gkxWPbJJoQ.gif)
+![](Arquivos/WindowsTerminal_MuSDLDStaT.gif)
 
 ---
 
