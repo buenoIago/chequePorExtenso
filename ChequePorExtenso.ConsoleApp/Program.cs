@@ -22,9 +22,15 @@ string[] centena = {
     "Oitocentos", "Novecentos"
 };
 
-Console.Write("Digite um número: ");
-int numero = Convert.ToInt32(Console.ReadLine());
+Console.Clear();
+Console.WriteLine("--------------------------");
+Console.WriteLine("Cheque por extenso");
+Console.WriteLine("--------------------------\n");
 
+Console.Write("Digite um número: ");
+double valor = Convert.ToDouble(Console.ReadLine());
+
+int numero = (int)valor;
 int resto = numero % 1000;
 int milharNumero = (numero / 1000) % 1000;
 int milhaoNumero = numero / 1000000;
@@ -188,10 +194,47 @@ else
 }
 
 if (numero == 1)
-    Console.WriteLine(" real");
+    Console.Write(" real");
 
 else
-    Console.WriteLine(" reais");
+    Console.Write(" reais");
+
+
+int centavos = (int)((valor - numero) * 100);
+
+if (centavos > 0)
+{
+    Console.Write(" e ");
+
+    int dezenaCentavo = centavos / 10;
+    int unidadeCentavo = centavos % 10;
+
+    if (dezenaCentavo == 1)
+    {
+        Console.Write($"{excecao[unidadeCentavo]}");
+    }
+
+    else
+    {
+        if (dezenaCentavo > 1)
+        {
+            Console.Write($"{dezena[dezenaCentavo]}");
+
+            if (unidadeCentavo > 0)
+                Console.Write(" e ");
+        }
+
+        if (unidadeCentavo > 0)
+        {
+            Console.Write($"{unidade[unidadeCentavo]}");
+        }
+    }
+
+    if (centavos == 1)
+        Console.Write(" centavo");
+    else
+        Console.Write(" centavos");
+}
 
 Console.WriteLine("\n---------------------------------");
 Console.WriteLine("Digite enter para continuar...");
